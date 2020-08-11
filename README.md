@@ -11,6 +11,8 @@ We will primarily be using three of Panda's tools with their usages defined belo
 >
 > **egg-palettize**
 >
+> ``egg-palettize [opts] file.egg [file.egg ...]``
+>
 > egg-palettize attempts to pack several texture maps from various models
 > together into one or more palette images, for improved rendering
 > performance and ease of texture management.  It can also resize textures
@@ -33,6 +35,8 @@ We will primarily be using three of Panda's tools with their usages defined belo
 >
 > **egg-texture-cards**
 >
+>``egg-texture-cards [opts] texture [texture ...] output.egg``
+>
 > egg-texture-cards generates an egg file consisting of several square
 > polygons, one for each texture name that appears on the command line.
 >
@@ -44,8 +48,23 @@ We will primarily be using three of Panda's tools with their usages defined belo
 >
 > **egg-trans**
 >
+>``egg-trans [opts] -o output.egg input.egg``
+>
 > egg-trans reads an egg file and writes an essentially equivalent egg
 > file to the standard output, or to the file specified with -o.  Some
 > simple operations on the egg file are supported.
 
-### Texture Attributes (*.txa)
+### Texture Attributes (txa) ###
+
+## Palletization Process ##
+
+### 2D Assets ###
+
+The typical pipeline for palettizing 2D assets, such as GUI and simple
+2d images, utilize Panda's **egg-texture-cards** tool. This is
+crucial for the input egg file required by **egg-palettize**.
+
+### 3D Assets ###
+
+
+
