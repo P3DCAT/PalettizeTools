@@ -1,0 +1,134 @@
+<CoordinateSystem> { Y-Up }
+
+<Texture> kart_Rim_5 {
+  "example_palette_4allc_1.png"
+  <Scalar> format { rgba }
+  <Scalar> minfilter { linear }
+  <Scalar> magfilter { linear }
+  <Scalar> anisotropic-degree { 0 }
+  <Scalar> alpha { dual }
+  <Transform> {
+    <Matrix3> {
+      0.25 0 0
+      0 0.5 0
+      0 0 1
+    }
+  }
+}
+<Texture> kart_Rim_4 {
+  "example_palette_4allc_1.png"
+  <Scalar> format { rgba }
+  <Scalar> minfilter { linear }
+  <Scalar> magfilter { linear }
+  <Scalar> anisotropic-degree { 0 }
+  <Scalar> alpha { dual }
+  <Transform> {
+    <Matrix3> {
+      0.25 0 0
+      0 0.5 0
+      0.75 0.5 1
+    }
+  }
+}
+<Texture> kart_Rim_3 {
+  "example_palette_4allc_1.png"
+  <Scalar> format { rgba }
+  <Scalar> minfilter { linear }
+  <Scalar> magfilter { linear }
+  <Scalar> anisotropic-degree { 0 }
+  <Scalar> alpha { dual }
+  <Transform> {
+    <Matrix3> {
+      0.25 0 0
+      0 0.5 0
+      0.5 0.5 1
+    }
+  }
+}
+<Texture> kart_Rim_2 {
+  "example_palette_4allc_1.png"
+  <Scalar> format { rgba }
+  <Scalar> minfilter { linear }
+  <Scalar> magfilter { linear }
+  <Scalar> anisotropic-degree { 0 }
+  <Scalar> alpha { dual }
+  <Transform> {
+    <Matrix3> {
+      0.25 0 0
+      0 0.5 0
+      0.25 0.5 1
+    }
+  }
+}
+<Texture> kart_Rim_1 {
+  "example_palette_4allc_1.png"
+  <Scalar> format { rgba }
+  <Scalar> minfilter { linear }
+  <Scalar> magfilter { linear }
+  <Scalar> anisotropic-degree { 0 }
+  <Scalar> alpha { dual }
+  <Transform> {
+    <Matrix3> {
+      0.25 0 0
+      0 0.5 0
+      0 0.5 1
+    }
+  }
+}
+<Group> {
+  <Switch> { 1 }
+  <Scalar> fps { 2 }
+  <VertexPool> vpool {
+    <Vertex> 0 {
+      -0.5 0.5 0
+      <UV> { 0 1 }
+    }
+    <Vertex> 1 {
+      -0.5 -0.5 0
+      <UV> { 0 0 }
+    }
+    <Vertex> 2 {
+      0.5 -0.5 0
+      <UV> { 1 0 }
+    }
+    <Vertex> 3 {
+      0.5 0.5 0
+      <UV> { 1 1 }
+    }
+  }
+  <Group> kart_Rim_1 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { kart_Rim_1 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> kart_Rim_2 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { kart_Rim_2 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> kart_Rim_3 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { kart_Rim_3 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> kart_Rim_4 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { kart_Rim_4 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> kart_Rim_5 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { kart_Rim_5 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+}

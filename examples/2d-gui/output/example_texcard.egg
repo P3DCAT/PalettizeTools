@@ -1,0 +1,80 @@
+<Comment> {
+  "egg-texture-cards -f rgba -o ../output/example_texcard.egg kart_Rim_1.png kart_Rim_2.png kart_Rim_3.png kart_Rim_4.png kart_Rim_5.png"
+}
+<Texture> kart_Rim_5 {
+  kart_Rim_5.png
+  <Scalar> format { rgba }
+}
+<Texture> kart_Rim_4 {
+  kart_Rim_4.png
+  <Scalar> format { rgba }
+}
+<Texture> kart_Rim_3 {
+  kart_Rim_3.png
+  <Scalar> format { rgba }
+}
+<Texture> kart_Rim_2 {
+  kart_Rim_2.png
+  <Scalar> format { rgba }
+}
+<Texture> kart_Rim_1 {
+  kart_Rim_1.png
+  <Scalar> format { rgba }
+}
+<Group> {
+  <Switch> { 1 }
+  <Scalar> fps { 2 }
+  <VertexPool> vpool {
+    <Vertex> 0 {
+      -0.5 0.5 0
+      <UV> { 0 1 }
+    }
+    <Vertex> 1 {
+      -0.5 -0.5 0
+      <UV> { 0 0 }
+    }
+    <Vertex> 2 {
+      0.5 -0.5 0
+      <UV> { 1 0 }
+    }
+    <Vertex> 3 {
+      0.5 0.5 0
+      <UV> { 1 1 }
+    }
+  }
+  <Group> kart_Rim_1 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { kart_Rim_1 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> kart_Rim_2 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { kart_Rim_2 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> kart_Rim_3 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { kart_Rim_3 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> kart_Rim_4 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { kart_Rim_4 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> kart_Rim_5 {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { kart_Rim_5 }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+:palette 1024 1024
+:imagetype png
+:powertwo 1
+:coverage 10
+
+:group example dir input
+*.png : force-rgba dual linear clamp_u clamp_v margin 0
