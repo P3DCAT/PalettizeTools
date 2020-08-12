@@ -55,12 +55,10 @@ palette images where nothing is used.
 The 'coverage' of a texture refers to the fraction of the area
 in the texture image that is actually used, according to the
 UV's that appear in the various egg files.
-
-If a texture's coverage is less than 1, only some of the texture image is
-used (and only this part will be written to the palette).
-
-If the coverage is greater than 1, the texture repeats that
-number of times.
+   If a texture's coverage is less than 1, only some of the texture image is
+used (and only this part will be written to the palette).  
+> If the coverage is greater than 1, the texture repeats that
+number of times.  
 
 A repeating texture may still be palettized
 by writing the required number of copies into the palette
