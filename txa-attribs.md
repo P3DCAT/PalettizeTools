@@ -55,7 +55,7 @@ If the coverage is greater than 1, the texture repeats that
 number of times.  A repeating texture may still be palettized
 by writing the required number of copies into the palette
 image, according to the coverage area.   
- * This command specifies the maximum coverage to allow for any
+This command specifies the maximum coverage to allow for any
           texture before rejecting it from the palette.  It may be any
           floating-point number greater than zero.  Set this to 1 to
           avoid palettizing repeating textures altogether.  This may
@@ -63,123 +63,123 @@ image, according to the coverage area.
           'coverage' keyword on the texture line.    
   
 ####   **:powertwo** *flag* ####      
->          Specifies whether textures should be forced to a power of two
->          size when they are not placed within a palette.  Use 1 for
->          true, to force textures to a power of two; or 0 to leave them
->          exactly the size they are specified.  The default is true.
+          Specifies whether textures should be forced to a power of two
+          size when they are not placed within a palette.  Use 1 for
+          true, to force textures to a power of two; or 0 to leave them
+          exactly the size they are specified.  The default is true.
 
 ####    **:round** *fraction fuzz* ####         
->          When the coverage area is computed, it may optionally be
->          rounded up to the next sizeable unit before placing the
->          texture within the palette.  This helps reduce constant
->          repalettization caused by slight differences in coverage
->          between egg files.  For instance, say file a.egg references a
->          texture with a coverage of 0.91, and then later file b.egg is
->          discovered to reference the same texture with a coverage of
->          0.92.  If the texture was already palettized with the original
->          coverage of 0.91, it must now be moved in the palette.
-> * Rounding the coverage area up to some fixed unit reduces this
->          problem.  For instance, if you specified a value 0.5 for
->          fraction in the above command, it would round both of these
->          values up to the next half-unit, or 1.0.
-> *  The second number is a fuzz factor, and should be a small
->          number; if the coverage area is just slightly larger than the
->          last unit (within the fuzz factor), it is rounded down instead
->          of up.  This is intended to prevent UV coordinates that are
->          just slightly out of the range [0, 1] (which happens fairly
->          often) from forcing the palettization area all the way up to
->          the next stop.
-> * The default if this is unspecified is 0.1 0.01.  That is,
->          round up to the next tenth, unless within a hundredth of the
->          last tenth.  To disable rounding, specify ':round no'.
->          Rounding is implicitly disabled when you run with the -opt
->          command line option.
+          When the coverage area is computed, it may optionally be
+          rounded up to the next sizeable unit before placing the
+          texture within the palette.  This helps reduce constant
+          repalettization caused by slight differences in coverage
+          between egg files.  For instance, say file a.egg references a
+          texture with a coverage of 0.91, and then later file b.egg is
+          discovered to reference the same texture with a coverage of
+          0.92.  If the texture was already palettized with the original
+          coverage of 0.91, it must now be moved in the palette.
+ Rounding the coverage area up to some fixed unit reduces this
+          problem.  For instance, if you specified a value 0.5 for
+          fraction in the above command, it would round both of these
+          values up to the next half-unit, or 1.0.
+  The second number is a fuzz factor, and should be a small
+          number; if the coverage area is just slightly larger than the
+          last unit (within the fuzz factor), it is rounded down instead
+          of up.  This is intended to prevent UV coordinates that are
+          just slightly out of the range [0, 1] (which happens fairly
+          often) from forcing the palettization area all the way up to
+          the next stop.
+ The default if this is unspecified is 0.1 0.01.  That is,
+          round up to the next tenth, unless within a hundredth of the
+          last tenth.  To disable rounding, specify ':round no'.
+          Rounding is implicitly disabled when you run with the -opt
+          command line option.
 
->  **:remap** (*never* | *group* | *poly*)    
->          Sometimes two different parts of an egg file may reference
->          different regions of a repeating texture.  For instance, group
->          A may reference UV coordinate values ranging from (0,5) to
->          (1,6), for a coverage of 1.0, while group B references values
->          ranging from (0,2) to (1,4), for a coverage of 2.0.  The
->          maximum coverage used is only 2.0, and thus the texture only
->          needs to appear in the palette twice, but the total range of
->          UV's is from (0,2) to (1,6), causing an apparent coverage of
->          4.0.
-> * It's possible for egg-palettize to reduce this kind of mistake
->          by remapping both groups of UV's so that they overlap.  This
->          parameter specifies how this operation should be done.  If the
->          option is 'never', remapping will not be performed; if
->          'group', entire groups will be remapped as a unit, if 'poly',
->          individual polygons within a group may be remapped.  This last
->          option provides the greatest minimization of UV coverage, but
->          possibly at the expense of triangle strips in the resulting
->          model (since some vertices can no longer be shared).
-> * Sometimes, it may be necessary to be more restrictive on
->          character geometry than on non-character geometry, because the
->          cost of adding additional vertices on characters is greater.
->          You can specify a different kind of remapping for characters
->          only, by using the keyword 'char' on the same line, e.g.
->          ':remap group char never'.
-> * The default remap mode for all geometry, character or
->          otherwise, if no remap mode is specified is 'poly'.
+####  **:remap** (*never* | *group* | *poly*) ####    
+          Sometimes two different parts of an egg file may reference
+          different regions of a repeating texture.  For instance, group
+          A may reference UV coordinate values ranging from (0,5) to
+          (1,6), for a coverage of 1.0, while group B references values
+          ranging from (0,2) to (1,4), for a coverage of 2.0.  The
+          maximum coverage used is only 2.0, and thus the texture only
+          needs to appear in the palette twice, but the total range of
+          UV's is from (0,2) to (1,6), causing an apparent coverage of
+          4.0.
+ It's possible for egg-palettize to reduce this kind of mistake
+          by remapping both groups of UV's so that they overlap.  This
+          parameter specifies how this operation should be done.  If the
+          option is 'never', remapping will not be performed; if
+          'group', entire groups will be remapped as a unit, if 'poly',
+          individual polygons within a group may be remapped.  This last
+          option provides the greatest minimization of UV coverage, but
+          possibly at the expense of triangle strips in the resulting
+          model (since some vertices can no longer be shared).
+ Sometimes, it may be necessary to be more restrictive on
+          character geometry than on non-character geometry, because the
+          cost of adding additional vertices on characters is greater.
+          You can specify a different kind of remapping for characters
+          only, by using the keyword 'char' on the same line, e.g.
+          ':remap group char never'.
+ The default remap mode for all geometry, character or
+          otherwise, if no remap mode is specified is 'poly'.
 
->  **:imagetype** *type[,alpha_type]*      
->          This specifies the default type of image file that should be
->          generated for each palette image and for each unplaced texture
->          copied into the install directory.  This may be overridden for
->          a particular texture by specifying the image type on the
->          texture line.                      
-> * If two image type names separate by a comma are given, it
->          means to generate a second file of the second type for the
->          alpha channel, for images that require an alpha channel.  This
->          allows support for image file formats that do not support
->          alpha (for instance, JPEG).
+####  **:imagetype** *type[,alpha_type]*  ####    
+          This specifies the default type of image file that should be
+          generated for each palette image and for each unplaced texture
+          copied into the install directory.  This may be overridden for
+          a particular texture by specifying the image type on the
+          texture line.                      
+ If two image type names separate by a comma are given, it
+          means to generate a second file of the second type for the
+          alpha channel, for images that require an alpha channel.  This
+          allows support for image file formats that do not support
+          alpha (for instance, JPEG).
 
->  **:shadowtype** *type[,alpha_type]*         
->          When generating palette images, egg-palettize sometimes has to
->          read and write the same palette image repeatedly.  If the
->          palette image is stored in a lossy file format (like JPEG, see
->          :imagetype), this can eventually lead to degradation of the
->          palette images.  As a workaround, egg-palettize can store its
->          working copies of the palette images in lossless shadow
->          images.  Specify this to enable this feature; give it the name
->          of a lossless image file format.  The shadow images will be
->          written to the directory specified by -ds on the command line.
+####  **:shadowtype** *type[,alpha_type]* ####         
+          When generating palette images, egg-palettize sometimes has to
+          read and write the same palette image repeatedly.  If the
+          palette image is stored in a lossy file format (like JPEG, see
+          :imagetype), this can eventually lead to degradation of the
+          palette images.  As a workaround, egg-palettize can store its
+          working copies of the palette images in lossless shadow
+          images.  Specify this to enable this feature; give it the name
+          of a lossless image file format.  The shadow images will be
+          written to the directory specified by -ds on the command line.
 
->  **:group** *groupname [dir dirname] [on group1 group2 ...] [includes group1 group2 ...]*     
->          This defines a palette group, a logical division of textures.
->          Each texture is assigned to one or more palette groups before
->          being placed in any palette image; the palette images are tied
->          to the groups.
-> * The optional parameter 'dir' specifies a directory name to
->          associate with this group.  This name is substituted in for
->          the string '%g' when it appears in the map directory name
->          specified on the command line with -dm; this may be used to
->          install textures and palettes into different directories based
->          on the groups they are assigned to.
-> * Palette groups can also be hierarchically related.  The
->          keyword 'on' specifies any number of groups that this palette
->          group depends on; if a texture has already been assigned to
->          one of this group's dependent groups, it will not need to be
->          assigned to this group.  This also implicitly specifies a dir
->          if one has not already been specified.
-> *  The keyword 'includes' names one or more groups that depend on
->          this group.
+####  **:group** *groupname [dir dirname] [on group1 group2 ...] [includes group1 group2 ...]*  ####   
+          This defines a palette group, a logical division of textures.
+          Each texture is assigned to one or more palette groups before
+          being placed in any palette image; the palette images are tied
+          to the groups.
+ The optional parameter 'dir' specifies a directory name to
+          associate with this group.  This name is substituted in for
+          the string '%g' when it appears in the map directory name
+          specified on the command line with -dm; this may be used to
+          install textures and palettes into different directories based
+          on the groups they are assigned to.
+ Palette groups can also be hierarchically related.  The
+          keyword 'on' specifies any number of groups that this palette
+          group depends on; if a texture has already been assigned to
+          one of this group's dependent groups, it will not need to be
+          assigned to this group.  This also implicitly specifies a dir
+          if one has not already been specified.
+  The keyword 'includes' names one or more groups that depend on
+          this group.
 
->  **:textureswap** *groupname texturename0 texturename1 [texturename2 ...]*        
->          This option builds a set of matching, interchangeable palette
->          images. All palette images in the set share the same internal
->          texture layout. The intention is to be able to swap palette
->          images out at runtime, to replace entire sets of textures on a
->          model in one operation. The textures named by this option
->          indicate the texture images which are similar to each other,
->          and which all should be assigned to the same placement on the
->          different palette images: texturename0 will be assigned to
->          palette image 0, texturename1 to the same position on palette
->          image 1, texturename2 to the same position on palette image 2,
->          and so on. To define a complete palette image, you must repeat
->          this option several times to associate all of the similar
->          texture images.
+####  **:textureswap** *groupname texturename0 texturename1 [texturename2 ...]* ####       
+          This option builds a set of matching, interchangeable palette
+          images. All palette images in the set share the same internal
+          texture layout. The intention is to be able to swap palette
+          images out at runtime, to replace entire sets of textures on a
+          model in one operation. The textures named by this option
+          indicate the texture images which are similar to each other,
+          and which all should be assigned to the same placement on the
+          different palette images: texturename0 will be assigned to
+          palette image 0, texturename1 to the same position on palette
+          image 1, texturename2 to the same position on palette image 2,
+          and so on. To define a complete palette image, you must repeat
+          this option several times to associate all of the similar
+          texture images.
 
 
 ### Texture Keywords ###
