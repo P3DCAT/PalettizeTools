@@ -3,7 +3,7 @@ Texture Attributes Keywords
 *As denoted from ``egg-palettize -H``*
 
 
-### Usage ###
+## Usage ##
 Our attributes file (commonly referred to as ``textures.txa``) consists mostly of lines describing desired sizes of
 texture maps.
 
@@ -14,7 +14,7 @@ is scanned from the beginning and the first line that matches the
 filename defines the size of the texture, as well as other properties
 associated with the texture.
 
-### Syntax ###
+## Syntax ##
 We define our configuration attributes with a ``:`` prefix. Generic filenames are not required to start with a ``:`` prefix, but use such to define specific attributes for a group or a texture.
 
 Comments are denoted from a ``#`` prefix. It's best to use comments when defining different texture sectors.
@@ -26,50 +26,49 @@ Example:
 > ```
 > Defines the overall palette to use a PNG file format, while additionally defining the resolution for the known input texture.
 
-### Keywords ###
+## Keywords ##
 
 ### Special Keywords ###
->  **:palette** *xsize ysize*         
->          This specifies the size of the palette images to be created.
->          The default is 512 by 512.
+####  **:palette** *xsize ysize*  ####       
+This specifies the size of the palette images to be created. The default is 512 by 512.
 
->  **:margin** *msize*         
->          This specifies the amount of default margin to apply to all
->          textures that are placed within a palette image.  The margin
->          is a number of additional pixels that are written around the
->          texture image to help prevent color bleeding between
->          neighboring images within the same palette.  The default is 2.  
+####  **:margin** *msize*  ####       
+This specifies the amount of default margin to apply to all
+textures that are placed within a palette image.  The margin
+is a number of additional pixels that are written around the
+texture image to help prevent color bleeding between
+neighboring images within the same palette.  The default is 2.  
 
->  **:background** *r g b a*        
->          Specifies the background color of the generated palette
->          images.  Normally, this is black, and it doesn't matter much
->          since the background color is, by definition, the color of the
->          palette images where nothing is used.
+####  **:background** *r g b a* ####        
+Specifies the background color of the generated palette
+images.  Normally, this is black, and it doesn't matter much
+since the background color is, by definition, the color of the
+palette images where nothing is used.
 
->  **:coverage** *area*      
->          The 'coverage' of a texture refers to the fraction of the area
->          in the texture image that is actually used, according to the
->          UV's that appear in the various egg files.  If a texture's
->          coverage is less than 1, only some of the texture image is
->          used (and only this part will be written to the palette).  If
->          the coverage is greater than 1, the texture repeats that
->          number of times.  A repeating texture may still be palettized
->          by writing the required number of copies into the palette
->          image, according to the coverage area.   
-> * This command specifies the maximum coverage to allow for any
->          texture before rejecting it from the palette.  It may be any
->          floating-point number greater than zero.  Set this to 1 to
->          avoid palettizing repeating textures altogether.  This may
->          also be overridden for a particular texture using the
->          'coverage' keyword on the texture line.    
+####  **:coverage** *area* ####       
+The 'coverage' of a texture refers to the fraction of the area
+in the texture image that is actually used, according to the
+UV's that appear in the various egg files.  If a texture's
+coverage is less than 1, only some of the texture image is
+used (and only this part will be written to the palette).  
+If the coverage is greater than 1, the texture repeats that  
+number of times.  A repeating texture may still be palettized
+by writing the required number of copies into the palette
+image, according to the coverage area.   
+ * This command specifies the maximum coverage to allow for any
+          texture before rejecting it from the palette.  It may be any
+          floating-point number greater than zero.  Set this to 1 to
+          avoid palettizing repeating textures altogether.  This may
+          also be overridden for a particular texture using the
+          'coverage' keyword on the texture line.    
   
->  **:powertwo** *flag*      
+####   **:powertwo** *flag* ####      
 >          Specifies whether textures should be forced to a power of two
 >          size when they are not placed within a palette.  Use 1 for
 >          true, to force textures to a power of two; or 0 to leave them
 >          exactly the size they are specified.  The default is true.
 
->  **:round** *fraction fuzz*       
+####    **:round** *fraction fuzz* ####         
 >          When the coverage area is computed, it may optionally be
 >          rounded up to the next sizeable unit before placing the
 >          texture within the palette.  This helps reduce constant
@@ -183,7 +182,7 @@ Example:
 >          texture images.
 
 
-#### Texture Keywords ####
+### Texture Keywords ###
 
 There are several valid keywords that may be specified on the same line with the texture.  
 
@@ -279,6 +278,6 @@ There are several valid keywords that may be specified on the same line with the
 
 
 
-### References ###
+## References ##
 http://www.etc.cmu.edu/projects/panda3d/PandaDox/Panda/html/classEggTexture.html#EggTextures40
 
