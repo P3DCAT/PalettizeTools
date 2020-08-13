@@ -1,0 +1,27 @@
+:imagetype png
+
+:palette 1024 1024
+
+:powertwo 1
+
+# Allow textures that repeat up to three times to be palettized. This
+# requires stamping multiple copies of the texture into the palette.
+:coverage 3
+
+*.png : force-rgba dual clamp_u clamp_v margin 5 mipmap generic cont
+
+:group BR_trashcan
+BR_trashcan_new.png : 100% linear
+BR_trashcan_hat_new2.png : 100% linear
+BR_trashcan_side_new.png : 100% linear
+BR_trashcan_snow.png : 100% linear
+BR_trashcan.egg : 100% linear
+
+:group TTC_trashcan
+TT_mailbox_back.png : 100% linear
+TT_mailbox_foot.png : 100% linear
+TT_mailbox_frt.png : 100% linear
+TT_mailbox_side.png : 100% linear
+mailbox_TT_english.egg : 100% linear
+
+
