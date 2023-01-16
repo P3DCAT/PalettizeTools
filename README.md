@@ -1,4 +1,4 @@
-Egg Palletization Tools
+Egg Palettization Tools
 --------------
 This repository is aimed as a guide to using specific Panda3D tools.
 
